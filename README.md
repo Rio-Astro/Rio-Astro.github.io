@@ -1,4 +1,4 @@
-# My GitHub Pages Site amongus
+# My GitHub Pages Site
 
 This is a basic README file for my GitHub Pages project.
 
