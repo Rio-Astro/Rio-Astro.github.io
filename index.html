@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leroy Rio Anderson - Electrical Engineering Student</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            color: #34495e;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: #667eea;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .job {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .job:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .job-title {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+
+        .company {
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .date {
+            color: #7f8c8d;
+            font-style: italic;
+            white-space: nowrap;
+        }
+
+        .job-description {
+            margin-top: 10px;
+        }
+
+        .job ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .job li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .job li:before {
+            content: "▸";
+            color: #667eea;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-category h3 {
+            color: #34495e;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .education-item {
+            margin-bottom: 20px;
+        }
+
+        .degree {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+
+        .school {
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .award {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .award h3 {
+            margin-bottom: 5px;
+        }
+
+        .extracurricular {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .job-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .skills {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-circle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-circle:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-circle:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <h1>Leroy Rio Anderson</h1>
+            <p class="subtitle">Electrical Engineering Student | Film Production Professional | Creative Leader</p>
+            <div class="contact-info">
+                <a href="mailto:rio.landrr@gmail.com" class="contact-item">📧 rio.landrr@gmail.com</a>
+                <span class="contact-item">📱 (323) 388-7329</span>
+                <span class="contact-item">📍 Los Angeles, CA 90069</span>
+                <a href="https://unsplash.com/rioastro" target="_blank" class="contact-item">📷 Photography Portfolio</a>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2>About Me</h2>
+            <p>Passionate Electrical Engineering student with a unique blend of technical expertise and creative experience in film production. I bring innovative problem-solving skills, leadership experience, and a proven track record of increasing engagement and driving results across diverse projects. Currently pursuing my Bachelor's degree while building practical experience in both engineering and creative fields.</p>
+        </section>
+
+        <section class="section">
+            <h2>Work Experience</h2>
+            
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Student Worker / Volunteer</div>
+                        <div class="company">DSIG, Los Angeles, California</div>
+                    </div>
+                    <div class="date">July 2023 – June 2025</div>
+                </div>
+                <div class="job-description">
+                    <p>Demonstrated initiative, creativity, and leadership across multiple projects under the DSIG program</p>
+                    <ul>
+                        <li>Increased student check-ins at the Black Student Success Center by 13% through innovative engagement strategies</li>
+                        <li>Became the digital face of a major campus event, leveraging Instagram to boost student turnout and visibility</li>
+                        <li>Revamped social media for a film festival, blending trends with brand voice to grow engagement by 200%</li>
+                        <li>Conducted market research and co-led marketing strategy to align campaigns with target audience behavior</li>
+                        <li>Delivered polished video projects for 580 Cafe by aligning client vision with creative direction; led editing from concept to final cut</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Game Tester</div>
+                        <div class="company">Good Gamer Group, Los Angeles, California</div>
+                    </div>
+                    <div class="date">April 2022 – Present</div>
+                </div>
+                <div class="job-description">
+                    <ul>
+                        <li>Tested unreleased games and provided detailed, actionable feedback based on user experience</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Film & Video Production</div>
+                        <div class="company">Various Productions, Los Angeles, California</div>
+                    </div>
+                    <div class="date">April 2022 – June 2023</div>
+                </div>
+                <div class="job-description">
+                    <ul>
+                        <li><strong>Videographer - Brewery Recording Studio:</strong> Shot and edited interview-based content; collaborated with Creative Director; troubleshot equipment issues</li>
+                        <li><strong>Camera Operator - HIM:</strong> Operated gimbal and external monitors for night shoots; filmed BTS promo content</li>
+                        <li><strong>2nd Assistant Director - Whatever It Takes:</strong> Ran safety briefs, solved on-set issues, coordinated meals and logistics for an international production</li>
+                        <li><strong>Assistant Producer - Endless Opportunity:</strong> Streamlined a 120-page script into a producible format; advised on budget, casting, and logistics</li>
+                        <li><strong>Production Assistant – Airrack/NYFW:</strong> Managed heavy prop transport, truck returns, seating VIPs, and supporting model/designer logistics</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Education</h2>
+            <div class="education-item">
+                <div class="degree">Bachelor's in Electrical Engineering</div>
+                <div class="school">Pasadena City College, Los Angeles, California</div>
+                <div class="date">August 2023 – July 2026</div>
+            </div>
+
+            <div class="extracurricular">
+                <h3>Cardinal and Gold Leadership Retreat</h3>
+                <p><em>April 2025</em></p>
+                <ul>
+                    <li>Selected to participate in a competitive 3-day immersive leadership retreat focused on self-awareness, diversity, and communication</li>
+                    <li>Completed high-impact workshops on conflict resolution, team collaboration, and positive communication techniques</li>
+                    <li>Enhanced leadership confidence and emotional intelligence through team-based challenges</li>
+                </ul>
+            </div>
+
+            <div class="extracurricular">
+                <h3>Lancer Motorsport/Caltech Racing - Ex-Vice President</h3>
+                <p><em>August 2023 – May 2024</em></p>
+                <ul>
+                    <li>Led the club during a recession and loss of resources, pulling club from brink of shutdown through partnering with Caltech Racing</li>
+                    <li>Created flyers and organized club events featuring F1, NASCAR, Rally racing as well as holding debates of car manufacturers</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Awards & Honors</h2>
+            <div class="award">
+                <h3>Ralph F. Bernays Award - December 2024</h3>
+                <p>Awarded scholarship for academic excellence</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Skills</h2>
+            <div class="skills">
+                <div class="skill-category">
+                    <h3>Engineering & Technical</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Raspberry Pi</span>
+                        <span class="skill-tag">Arduino</span>
+                        <span class="skill-tag">Altium Designer</span>
+                        <span class="skill-tag">DIT Media Management</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Creative & Media</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Filmmaking</span>
+                        <span class="skill-tag">Photography</span>
+                        <span class="skill-tag">Adobe Suite</span>
+                        <span class="skill-tag">Camera Operation</span>
+                        <span class="skill-tag">Script Editing</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Leadership & Communication</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Leadership</span>
+                        <span class="skill-tag">Event Logistics</span>
+                        <span class="skill-tag">Communication</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Let's Connect</h2>
+            <p>I'm always interested in new opportunities and collaborations. Whether you're looking for someone with engineering expertise, creative production skills, or leadership experience, I'd love to hear from you!</p>
+            <div style="margin-top: 20px;">
+                <a href="mailto:rio.landrr@gmail.com" class="contact-item" style="font-size: 1.1em;">📧 Get in touch: rio.landrr@gmail.com</a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
